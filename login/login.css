@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+body{
+    background-image: url(../img/R.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Frijole", system-ui;
+}
+
+
+
+.back{
+    text-align: center;
+    font-size: 30px;
+    font-family: "Frijole", system-ui;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    border-radius: 24px;
+    text-decoration: none;
+ }  
+ .back:hover{
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);}
+
+#loginInp{    
+    padding: 10px;
+    border: none;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    font-family: "Frijole", system-ui; 
+}
+
+#loginInp:focus{
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+#passwordInp{
+    padding: 10px;
+    border: none;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    font-family: "Frijole", system-ui; 
+}
+
+#passwordInp:focus{
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+#loginBtn{
+    padding: 10px;
+    border: none;
+    background: none;
+    display: block;
+    margin: 20px auto;    
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: "Frijole", system-ui; 
+}
+
+#loginBtn:hover{
+    background: #2ecc71;
+}
+
+.box{
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    color: white;
+    font-size: 15px;
+    border-radius: 20px;   
+    font-family: "Frijole", system-ui;
+}
+
+.title{ 
+    text-align: center;
+    font-size: 100px;
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+ }

@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(../img/R.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Frijole", system-ui;
+}
+
+.back{
+    text-align: center;
+    font-size: 30px;
+    font-family: "Frijole", system-ui;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    border-radius: 24px;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: 0.3s;
+}  
+.back:hover{
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.boxInfo{
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    color: white;
+    font-size: 15px;
+    border-radius: 20px;
+}  
+
+.title{
+    text-align: center;
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+
+.inputBox{
+    padding: 10px;
+    border: none;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    font-family: "Frijole", system-ui; 
+}
+
+
+ .depositeBox, .withdrawBox, .transferBox, .setTransactionLimit{
+    padding: 10px;
+    border: none;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    font-family: "Frijole", system-ui; 
+}
+
+.inputBox:focus, .depositeBox:focus, .withdrawBox:focus, .transferBox:focus, .setTransactionLimit:focus{
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+button, #registrationBtn{
+    padding: 10px;
+    border: none;
+    background: #3498db;
+    display: block;
+    margin: 20px auto;    
+    text-align: center;
+    padding: 14px 10px;
+    width: 150px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: "Frijole", system-ui; 
+    font-size: 16px;
+}
+
+button:hover, #registrationBtn:hover{
+    background: #2ecc71;
+}
+
+.primary-btn{
+    background: #2980b9;
+    border: 2px solid #3498db;
+}
+
+.primary-btn:hover{
+    background: #1abc9c;
+}
+
+.secondary-btn{
+    background: #e74c3c;
+    border: 2px solid #c0392b;
+}
+
+.secondary-btn:hover{
+    background: #ff7675;
+}
+
+.setTransactionLimit{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.setTransactionLimit input{
+    width: 250px;
+    padding: 10px;
+    border: 2px solid #3498db;
+    border-radius: 24px;
+    background: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.25s;
+}
+
+.setTransactionLimit input:focus{
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+.setTransactionLimit button{
+    width: 220px;
+    background: #3498db;
+    border: none;
+    padding: 14px 10px;
+    border-radius: 24px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.setTransactionLimit button:hover{
+    background: #2ecc71;
+}
