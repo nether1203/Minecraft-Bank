@@ -4,7 +4,7 @@
     box-sizing: border-box; 
 }
 body{
-    background-image: url(../img/R.jfif);
+    background-image: url(img/R.jfif);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

@@ -13,6 +13,7 @@ body{
 }
 
 .back{
+    display: inline-block;
     text-align: center;
     font-size: 30px;
     font-family: "Frijole", system-ui;
@@ -22,7 +23,6 @@ body{
     border-radius: 24px;
     text-decoration: none;
     padding: 10px 20px;
-    display: inline-block;
     transition: 0.3s;
 }  
 .back:hover{
@@ -40,6 +40,10 @@ body{
     color: white;
     font-size: 15px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }  
 
 .title{
@@ -49,25 +53,37 @@ body{
     text-shadow: 2px 2px 2px rgb(0, 0, 0);
 }
 
-.inputBox{
-    padding: 10px;
-    border: none;
-    background: none;
-    display: block;
-    margin: 20px auto;
+.depositeBox,
+.transferBox,
+.seyTransactionLimit{
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
     text-align: center;
-    border: 2px solid #3498db;
-    padding: 14px 10px;
-    width: 250px;
-    outline: none;
+    margin: auto;
+    margin-top: 5%;
     color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    font-family: "Frijole", system-ui; 
+    font-size: 15px;
+    border-radius: 20px;
 }
 
+.withdrawBox{
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    color: white;
+    font-size: 15px;
+    border-radius: 20px;
+}
 
- .depositeBox, .withdrawBox, .transferBox, .setTransactionLimit{
+#withdrawInp,
+#transferInp,
+#transferCardInp,
+#depositeInp,
+#transactionLimitInp{
     padding: 10px;
     border: none;
     background: none;
@@ -78,91 +94,96 @@ body{
     padding: 14px 10px;
     width: 200px;
     outline: none;
-    color: white;
+    color: rgb(0, 0, 0);
     border-radius: 24px;
     transition: 0.25s;
     font-family: "Frijole", system-ui; 
 }
-
-.inputBox:focus, .depositeBox:focus, .withdrawBox:focus, .transferBox:focus, .setTransactionLimit:focus{
+#withdrawInp:focus,
+#transferInp:focus,
+#transferCardInp:focus,
+#depositeInp:focus,
+#transactionLimitInp:focus{
     width: 280px;
     border-color: #2ecc71;
 }
 
-button, #registrationBtn{
+#withdrawBtn,
+#transferBtn,
+#transferCardBtn,
+#depositeBtn,
+#transactionLimitBtn{
     padding: 10px;
     border: none;
-    background: #3498db;
+    background: none;
     display: block;
     margin: 20px auto;    
     text-align: center;
+    border: 2px solid #3498db;
     padding: 14px 10px;
-    width: 150px;
+    width: 200px;
     outline: none;
     color: white;
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer;
     font-family: "Frijole", system-ui; 
-    font-size: 16px;
 }
+#withdrawBtn:hover,
+#transferBtn:hover,
+#transferCardBtn:hover,
+#depositeBtn:hover,
+#transactionLimitBtn:hover{
 
-button:hover, #registrationBtn:hover{
     background: #2ecc71;
 }
 
-.primary-btn{
-    background: #2980b9;
-    border: 2px solid #3498db;
-}
-
-.primary-btn:hover{
-    background: #1abc9c;
-}
-
-.secondary-btn{
-    background: #e74c3c;
-    border: 2px solid #c0392b;
-}
-
-.secondary-btn:hover{
-    background: #ff7675;
-}
-
-.setTransactionLimit{
-    text-align: center;
-    margin-top: 20px;
-}
-
-.setTransactionLimit input{
-    width: 250px;
+#depositeInp{
     padding: 10px;
-    border: 2px solid #3498db;
-    border-radius: 24px;
+    border: none;
     background: none;
-    color: white;
+    display: block;
+    margin: 20px auto;
     text-align: center;
-    font-size: 16px;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: rgb(0, 0, 0);
+    border-radius: 24px;
     transition: 0.25s;
+    font-family: "Frijole", system-ui; 
 }
-
-.setTransactionLimit input:focus{
+#depositeInp:focus{
     width: 280px;
     border-color: #2ecc71;
 }
 
-.setTransactionLimit button{
-    width: 220px;
-    background: #3498db;
+#depositeBtn{
+    padding: 10px;
     border: none;
+    background: none;
+    display: block;
+    margin: 20px auto;    
+    text-align: center;
+    border: 2px solid #3498db;
     padding: 14px 10px;
-    border-radius: 24px;
+    width: 200px;
+    outline: none;
     color: white;
-    font-size: 16px;
-    cursor: pointer;
+    border-radius: 24px;
     transition: 0.25s;
+    cursor: pointer;
+    font-family: "Frijole", system-ui; 
+}
+#depositeBtn:hover{
+    border-color: #2ecc71;
 }
 
-.setTransactionLimit button:hover{
-    background: #2ecc71;
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
