@@ -1,11 +1,10 @@
-function UserCard(index, saveData = null){
+function UserCard(index){
  
-    this._balance = saveData ? saveData.balance : 0;
-    this._transactionLimit = saveData ? saveData.transactionLimit : 100;
-    this._historyLogs = saveData ? saveData.historyLogs : [];
+    this._balance = 100;
+    this._transactionLimit = 100;
+    this._historyLogs = [];
     this._key = index;
  
-   saveCardToLocalStorage() 
     let logOperation = (operationType, credits) => {
         this._historyLogs.push({
             operationType: operationType,
@@ -78,15 +77,12 @@ class UserAccount {
         this._email = email;
         this._cards = [];
     }
-    addCard(savedCardDate = null){
+    addCard(){
         if(this._cards.length >= 3){
             return console.warn("User can't have more than 3 cards");
         } else{
-            const cardIndex = this._cards.length + 1;
-            const card = new UserCard(cardIndex, savedCardDate);
-            this._cards.push(card)
+            const card = new UserCard(this._cards.length + 1)
             this._cards.push(card);
-            saveCardToLocalStorage();
             return card;
         }
  
@@ -107,111 +103,88 @@ class UserAccount {
         return console.error("Card with such key doesn't exist");
     }
  
-    getCards(){
-        return this._cards;
-    }
  
     
-}
-
-
-
-function getCardsFromLocalStorege(){
-    const cardsDate = JSON.parse(localStorage.getItem('cardsDate'));
-    return cardsDate
 }
 const boxInfo = document.querySelector('.boxInfo');
 const depositeBtn = document.querySelector('#depositeBtn');
 const depositeInp = document.querySelector('#depositeInp');
+const withdrawBtn = document.querySelector('#withdrawBtn');
+const withdrawInp = document.querySelector('#withdrawInp');
+const transferBtn = document.querySelector('#transferBtn');
+const transferInp = document.querySelector('#transferInp');
+const changecard = document.querySelector('.changeCard');
+const changecard1 = document.querySelector('.changeCard1');
+const transferCardInp = document.querySelector('#transferCardInp');
 const userDB = JSON.parse(localStorage.getItem('user'));
-const historyLogs  = document.querySelector('.historyLogs')
-const WithdrawnBtn = document.querySelector('#withdrawBtn')
-const WithdrawnInp = document.querySelector('#withdrawInp')
+const setTransactionLimit = document.querySelector('#transactionLimitInp');
+const transactionLimitBtn = document.querySelector('#transactionLimitBtn');
+
 const user = new UserAccount(userDB.name, userDB.email);
-const savedCardsDate = getCardsFromLocalStorege();
-
-if(savedCardsDate && savedCardsDate.length > 0 ){
-    for(let cardsDate of savedCardsDate){
-        user.addCard(cardsDate);
-    } 
-}else {
-    user.addCard();
-    user.addCard();
-    saveCardToLocalStorage()
-}
-
-const imgLogotransaction = document.querySelector('.imgLogotransaction')
 
 user.addCard();
 user.addCard();
 
 const card1 = user.getCardByKey(1);
 const card2 = user.getCardByKey(2);
-console.log(card1.getCardOptions().balance);
-function infoBoxFuunction(){
-    boxInfo.innerHTML = '';
 
-boxInfo.innerHTML += `
-      <h3>card number: <span class="cardNumber">${card1.getCardOptions().key}</span></h3>
-        <h3>card balance: <span class="cardBalance">${card1.getCardOptions().balance}</span></h3>
-        <h3>transaction limit: <span class="transactionLimit">${card1.getCardOptions().transactionLimit}</span></h3>
-        <h3>history logs: <span class="historyLogs">${card1.getCardOptions().historyLogs}</span></h3>
-`;}
-
-infoBoxFuunction();
-
-
-
-depositeBtn.addEventListener('click', () => {
-    if(depositeInp.value > 0){
-        card1.putCredits(+depositeInp.value);
-        
-        infoBoxFuunction(card1, boxInfo)
-        console.log(card1.getCardOptions());
-        historyBoxRender(card1)
-
-       
-    }
-
-})
-
-WithdrawnBtn.addEventListener('click', () =>{
-    if(WithdrawnInp.value > 0){
-        card1.putCredits(+WithdrawnInp.value);
-        
-        infoBoxFuunction(card1, boxInfo)
-    }
-    console.log(card1.getCardOptions());
-    historyBoxRender(card1)
+function updateInfoBox(card) {
+    const options = card.getCardOptions();
+    boxInfo.innerHTML = `
+        <h3>card number: <span class="cardNumber">${options.key}</span></h3>
+        <h3>card balance: <span class="cardBalance">${options.balance}</span></h3>
+        <h3>transaction limit: <span class="transactionLimit">${options.transactionLimit}</span></h3>
+        <h3>history logs: <span class="historyLogs">${options.historyLogs}</span></h3>
+    `;
 }
 
- )
+updateInfoBox(card1);
+updateInfoBox(card2);
 
+changecard.addEventListener('click', () => updateInfoBox(card2));
+changecard1.addEventListener('click', () => updateInfoBox(card1));
 
+function handleTransaction(card1, card2) {
+    depositeBtn.addEventListener('click', () => {
+        card1.putCredits(+depositeInp.value);
+        updateInfoBox(card1);
+    });
 
+    withdrawBtn.addEventListener('click', () => {
+        card1.takeCredits(+withdrawInp.value);
+        updateInfoBox(card1);
+    });
 
-function historyBoxRender (card){
-    historyLogs.innerHTML = ``
-    card.getCardOptions().historyLogs.forEach(tarnsaction =>{
-        console.log(tarnsaction.operationType);
-        historyLogs.innerHTML += `  <li class="transaction">
-        <img src="" alt="" class="imgLogotransaction">
-        <h5 class="transationtitle">${tarnsaction.operationType}</h5>
-        <div class="transactionhistory">
-        <span class="transactionAmount">${tarnsaction.credits}</span>
-        <span class="transactionData">${tarnsaction.operationTime}</span></div>
-    </li>`
+    transferBtn.addEventListener('click', () => {
+        card1.transferCredits(+transferInp.value, card2);
+        updateInfoBox(card1);
+    });
+
+    transactionLimitBtn.addEventListener('click', () => {
+        card1.setTransactionLimit(+setTransactionLimit.value);
+        updateInfoBox(card1);
+    });
+
+    depositeBtn.addEventListener('click', () => {
+        card2.putCredits(+depositeInp.value);
+        updateInfoBox(card2);
+    });
+
+    withdrawBtn.addEventListener('click', () => {
+        card2.takeCredits(+withdrawInp.value);
+        updateInfoBox(card2);
+    });
+
+    transferBtn.addEventListener('click', () => {
+        card2.transferCredits(+transferInp.value, card1);
+        updateInfoBox(card2);
+    });
+
+    transactionLimitBtn.addEventListener('click', () => {
+        card2.setTransactionLimit(+setTransactionLimit.value);
+        updateInfoBox(card2);
     });
 }
 
-function saveCardToLocalStorage(card){
-    const cardDate = user.getCardByKey().map(card => card.getCardOptions());
-    localStorage.setItem('cards', JSON.stringify(cardDate))
-}
-
-
-
-saveCardToLocalStorage()
-
-
+handleTransaction(card1, card2);
 
